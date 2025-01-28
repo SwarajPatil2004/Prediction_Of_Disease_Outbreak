@@ -15,3 +15,23 @@ with st.sidebar:
                           menu_icon="hospital-fill", icons=['activity','heart','person'],
                           default_index=0)
     
+if selected == 'Diabetes Prediction':
+    st.title('Diabetes Prediction using ML')
+    col1,col2,col3= st.columns(3)
+    with col1:
+        Pregnancies= st.text_input('Number of Pregnancies')
+    with col2:
+        Glucose= st.text_input('Glucose level')
+    with col3: 
+        Bloodpressure= st.text_input('Blood Pressure')
+    with col1:
+        Skinthickness= st.text_input('Skin thickness value')
+    with col2:
+        Insulin= st.text_input('Insulin level')
+    with col3:
+        BMI= st.text_input('BMI value')
+    with col1:
+        DiabetesPedigreeFunction= st.text_input('Diabetes Pedigree Function')
+    with col2:
+        Age= st.text_input("Age")
+
