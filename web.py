@@ -37,12 +37,15 @@ if selected == 'Diabetes Prediction':
     diab_diagnosis = 'Enter the details above'
     if st.button('Diabetes Test Result'):
         user_input = [Pregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age]
-        user_input = [float(x) for x in user_input]
-        diab_prediction = diabetes_model.predict([user_input])
-        if diab_prediction[0] == 1:
-            diab_diagnosis = 'The person is diabetic'
+        if '' in user_input:
+            diab_diagnosis= "Please fill the necessary details"
         else:
-            diab_diagnosis = 'The person is not diabetic'
+            user_input = [float(x) for x in user_input]
+            diab_prediction = diabetes_model.predict([user_input])
+            if diab_prediction[0] == 1:
+                diab_diagnosis = 'The person is diabetic'
+            else:
+                diab_diagnosis = 'The person is not diabetic'
     st.success(diab_diagnosis)
 
 
