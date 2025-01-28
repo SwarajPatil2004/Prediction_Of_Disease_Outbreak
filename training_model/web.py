@@ -6,9 +6,9 @@ from streamlit_option_menu import option_menu
 st.set_page_config(page_title= "Prediction of Disease Outbreak",
                    layout="wide",
                    page_icon=":doctor:")
-diabetes_model = pickle.load(open(r"training_model/diabetes/diabetes_model.sav", "rb"))
-heart_disease_model = pickle.load(open(r"training_model/heart/heart_disease_model.sav", "rb"))
-parkinsons_model = pickle.load(open(r"training_model/parkinsons/parkinsons_prediction_model", "rb"))
+diabetes_model = pickle.load(open(r"C:\Users\Sheetal Patil\Documents\GitHub\Prediction_Of_Disease_Outbreak\training_model\daibetes\diabetes_model.sav", "rb"))
+heart_disease_model = pickle.load(open(r"C:\Users\Sheetal Patil\Documents\GitHub\Prediction_Of_Disease_Outbreak\training_model\heart\heart_disease_model.sav", "rb"))
+parkinsons_model = pickle.load(open(r"C:\Users\Sheetal Patil\Documents\GitHub\Prediction_Of_Disease_Outbreak\training_model\parkinsons\parkinsons_prediction_model.sav", "rb"))
 
 with st.sidebar:
     selected= option_menu('Prediction of disease outbreak sustem',['Diabetes Prediction','Heart Disease Prediction','Parkinsons Prediction'],
@@ -94,67 +94,56 @@ elif selected== 'Heart Disease Prediction':
             
     st.success(heart_disease_diagnosis)
 
-if selected == "Parkinsons Predictions":
+elif selected == 'Parkinsons Prediction':
     st.title("Parkinson's Prediction using ML")
     
-    # Collecting user input in columns
     col1, col2, col3 = st.columns(3)
     
     with col1:
         MDVP_Fo = st.text_input('MDVP:Fo (Hz)')
-        MDVP_Fhi = st.text_input('MDVP:Fhi (Hz)')
-        MDVP_Flo = st.text_input('MDVP:Flo (Hz)')
         MDVP_Jitter_percent = st.text_input('MDVP:Jitter (%)')
-        MDVP_Jitter_Abs = st.text_input('MDVP:Jitter (Abs)')
-        MDVP_RAP = st.text_input('MDVP:RAP')
         MDVP_PPQ = st.text_input('MDVP:PPQ')
-
-    with col2:
-        Jitter_DDP = st.text_input('Jitter: DDP')
-        MDVP_Shim = st.text_input('MDVP:Shimmer')
         MDVP_Shim_dB = st.text_input('MDVP:Shimmer(dB)')
-        Shimmer_APQ3 = st.text_input('Shimmer:APQ3')
-        Shimmer_APQ5 = st.text_input('Shimmer:APQ5')
         MDVP_APQ = st.text_input('MDVP:APQ')
+        HNR = st.text_input('HNR')
+        spread1 = st.text_input('spread1')
+        PPE = st.text_input('PPE')
+       
+    with col2:
+        MDVP_Fhi = st.text_input('MDVP:Fhi (Hz)')
+        MDVP_Jitter_Abs = st.text_input('MDVP:Jitter (Abs)')
+        Jitter_DDP = st.text_input('Jitter: DDP')
+        Shimmer_APQ3 = st.text_input('Shimmer:APQ3')
         Shimmer_DDA = st.text_input('Shimmer:DDA')
+        RPDE = st.text_input('RPDE')
+        spread2 = st.text_input('spread2')
 
     with col3:
+        MDVP_Flo = st.text_input('MDVP:Flo (Hz)')
+        MDVP_RAP = st.text_input('MDVP:RAP')
+        MDVP_Shim = st.text_input('MDVP:Shimmer')
+        Shimmer_APQ5 = st.text_input('Shimmer:APQ5')
         NHR = st.text_input('NHR')
-        HNR = st.text_input('HNR')
-        RPDE = st.text_input('RPDE')
         DFA = st.text_input('DFA')
-        spread1 = st.text_input('spread1')
-        spread2 = st.text_input('spread2')
         D2 = st.text_input('D2')
-        PPE = st.text_input('PPE')
-    
-    # Set the initial message for the diagnosis
+               
     voice_diagnosis = 'Enter the details above'
 
-    # Button to trigger prediction
     if st.button('Voice Prediction Test Result'):
-        # Collect all user inputs
+        
         user_input = [MDVP_Fo, MDVP_Fhi, MDVP_Flo, MDVP_Jitter_percent, MDVP_Jitter_Abs, MDVP_RAP, MDVP_PPQ, 
                       Jitter_DDP, MDVP_Shim, MDVP_Shim_dB, Shimmer_APQ3, Shimmer_APQ5, MDVP_APQ, Shimmer_DDA, 
                       NHR, HNR, RPDE, DFA, spread1, spread2, D2, PPE]
 
-        # Check if any field is empty
+        
         if '' in user_input:
             voice_diagnosis = "Please fill all the above details."
-        else:
-            # Convert inputs to float where necessary
-            try:
-                user_input = [float(x) for x in user_input]
-            except ValueError:
-                voice_diagnosis = "Please enter valid numerical values."
-            
-            # Make the prediction
-            if voice_diagnosis == 'Enter the details above':  # If the conversion was successful
-                voice_prediction = parkinsons_model.predict([user_input])
-                if voice_prediction[0] == 1:
-                    voice_diagnosis = 'The person has a voice disorder'
-                else:
-                    voice_diagnosis = 'The person does not have a voice disorder'
+        else:           
+            user_input = [float(x) for x in user_input]                    
+            voice_prediction = parkinsons_model.predict([user_input])
+            if voice_prediction[0] == 1:
+                voice_diagnosis = 'The person has a voice disorder'
+            else:
+                voice_diagnosis = 'The person does not have a voice disorder'
 
-    # Display the diagnosis
     st.success(voice_diagnosis)
