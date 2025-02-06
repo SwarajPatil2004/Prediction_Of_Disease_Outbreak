@@ -6,9 +6,12 @@ from streamlit_option_menu import option_menu
 st.set_page_config(page_title= "Prediction of Disease Outbreak",
                    layout="wide",
                    page_icon=":doctor:")
-diabetes_model = pickle.load(open(r"C:\Users\Sheetal Patil\Documents\GitHub\Prediction_Of_Disease_Outbreak\Saved_Models\diabetes_model.sav", "rb"))
-heart_disease_model = pickle.load(open(r"C:\Users\Sheetal Patil\Documents\GitHub\Prediction_Of_Disease_Outbreak\Saved_Models\heart_disease_model.sav", "rb"))
-parkinsons_model = pickle.load(open(r"C:\Users\Sheetal Patil\Documents\GitHub\Prediction_Of_Disease_Outbreak\Saved_Models\parkinsons_prediction_model.sav", "rb"))
+
+working_dir = os.path.dirname(os.path.abspath(__file__))
+
+diabetes_model = pickle.load(open(f"{working_dir}/Saved_Models/diabetes_model.sav", "rb"))
+heart_disease_model = pickle.load(open(f"{working_dir}/Saved_Models/heart_disease_model.sav", "rb"))
+parkinsons_model = pickle.load(open(f"{working_dir}/Saved_Models/parkinsons_prediction_model.sav", "rb"))
 
 with st.sidebar:
     selected= option_menu('Prediction of disease outbreak sustem',['Diabetes Prediction','Heart Disease Prediction','Parkinsons Prediction'],
