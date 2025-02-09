@@ -17,9 +17,9 @@ The models are deployed using **Streamlit** via `web.py`, allowing users to inpu
 ## Repository Structure
 ```
 📂 Saved_Models/
-├── diabetes_model.sav                         # Stores trained models (.pkl files)
-├── heart_disease_model.sav                    # Sample datasets
-├── parkinsons_prediction_model.sav            # Data preprocessing and model training scripts
+  ├── diabetes_model.sav                         # Stores trained models (.pkl files)
+  ├── heart_disease_model.sav                    # Sample datasets
+  ├── parkinsons_prediction_model.sav            # Data preprocessing and model training scripts
 ├── web.py                                     # Streamlit app to run predictions
 ├── requirements.txt                           # Dependencies for the project
 ├── README.md                                  # Project documentation (this file)
