@@ -1,4 +1,4 @@
-(Note: This project is part of virtual internship which required submission of **saved models** only. **Model training** and the **datasets** will be uploaded when submission process is completed.)
+(**Note**: This project is part of virtual internship which required submission of **saved models** only. **Model training** and the **datasets** will be uploaded when submission process is completed.)
 
 ---
 
