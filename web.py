@@ -9,7 +9,7 @@ st.set_page_config(page_title= "Prediction of Disease Outbreak",
 
 working_dir = os.path.dirname(os.path.abspath(__file__))
 
-diabetes_model = pickle.load(open(f"{working_dir}/Saved_Models/diabetes_model.sav", "rb"))
+diabetes_model = pickle.load(open(f"{working_dir}/Saved_Models/diabetes_prediction_rf.sav", "rb"))
 heart_disease_model = pickle.load(open(f"{working_dir}/Saved_Models/heart_disease_model.sav", "rb"))
 parkinsons_model = pickle.load(open(f"{working_dir}/Saved_Models/parkinsons_prediction_model.sav", "rb"))
 
